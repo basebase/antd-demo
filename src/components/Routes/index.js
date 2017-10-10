@@ -5,6 +5,7 @@ import App from '../App'
 import Login from '../Login'
 import Home from '../Page/Home'
 import User from '../Page/User'
+import DBTable from '../DBTable'
 
 
 const routes = (
@@ -15,6 +16,7 @@ const routes = (
             <App>
                 <Route path="/operating" component={Home} />
                 <Route path="/user" component={User}/>
+                <Route path="/product" component={DBTable}/>
             </App>
         </Switch>
     </div>

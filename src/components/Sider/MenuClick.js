@@ -8,6 +8,8 @@ export const handleClick = (item) => {
         history.push('/operating')
     } else if (item.key === "/user") {
         history.push("/user")
+    } else if (item.key === "/product") {
+        history.push("/product")
     }
 
     // 由于使用history.push()无法跳转...!所以这里手动刷新一次...!
