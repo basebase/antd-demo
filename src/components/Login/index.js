@@ -26,47 +26,6 @@ class LoginPage extends React.Component {
                 let p = values.password;
                 if (n === 'xiaomoyu' && p === 'xiaomoyu') {
                     console.log(values)
-
-
-
-                    // axios({
-                    //     url: 'http://0.0.0.0:8088/register',
-                    //     method: 'post',
-                    //     data: {
-                    //         username: n,
-                    //         password: p
-                    //     },
-                    //     headers: {
-                    //         'content-type': 'form-data'
-                    //     }
-                    // }).then((res) => {
-                    //     message.info(res.data)
-                    // }).catch((error) => {
-                    //     message.info(error)
-                    // })
-
-                    axios({
-
-                        url: 'http://0.0.0.0:8088/register',
-                        method: 'post',
-                        data: {username: n, password: p},
-                    }).then((res) => {
-                        message.info(res.data)
-                    }).catch((error) => {
-                        message.info(error)
-                    })
-
-
-                    // axios.get(
-                    //     "http://0.0.0.0:8088/register?username=" + n + "&password=" + p
-                    // ).then((res) => {
-                    //     message.info(res.data)
-                    // }).catch((error) => {
-                    //     message.info(error)
-                    // })
-
-
-
                 } else {
                     this.openNotificationWithIcon('info');
                 }
@@ -84,7 +43,7 @@ class LoginPage extends React.Component {
     }
 
     componentDidMount() {
-        this.openNotificationWithIcon('info');
+        // this.openNotificationWithIcon('info');
     }
 
     render() {

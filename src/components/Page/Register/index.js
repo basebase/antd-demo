@@ -17,21 +17,6 @@ class RegisterPage extends React.Component {
         this.openNotificationWithIcon = this.openNotificationWithIcon.bind(this)
     }
 
-    select (value) {
-        console.log("dasdasdasdasdasdsa", value)
-        axios({
-            url: 'http://localhost:8088/register',
-            method: 'post',
-            data: value,
-            headers: {
-                'content-type': 'multipart/form-data'
-            }
-        }).then((res) => {
-            message.info(res.data)
-        }).catch((error) => {
-            message.info(error)
-        })
-    }
 
     handleSubmit(e) {
         e.preventDefault();
@@ -39,16 +24,18 @@ class RegisterPage extends React.Component {
             if (!err) {
                 let n = values.username;
                 let p = values.password;
-                axios({
+                // axios({
+                //
+                //     url: 'http://0.0.0.0:8088/register',
+                //     method: 'post',
+                //     data: {username: n, password: p},
+                // }).then((res) => {
+                //     message.info(res.data);
+                // }).catch((error) => {
+                //     message.info(error);
+                // })
 
-                    url: 'http://0.0.0.0:8088/register',
-                    method: 'post',
-                    data: {username: n, password: p},
-                }).then((res) => {
-                    message.info(res.data);
-                }).catch((error) => {
-                    message.info(error);
-                })
+                response_data = post('register', values)
 
 
             }
