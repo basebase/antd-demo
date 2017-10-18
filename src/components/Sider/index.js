@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Menu, Icon, Button } from 'antd'
-
+import { HashRouter as Router, Link, Route } from 'react-router-dom'
 import { getMenus } from './LoadMenuConfig'
 import menus from '../../menu'
 
@@ -52,13 +52,15 @@ export default class Sider extends React.Component {
         <div id="leftMenu">
           <img src={ logo } width="50" id="logo" onClick={this.toggleCollapsed} />
 
-          <Menu
-            onClick={this.handleClick}
-            mode={'inline'}
-            inlineCollapsed={this.state.collapsed}
-          >
-              {getMenus(menus)}
-          </Menu>
+          <Router>
+              <Menu
+                  onClick={this.handleClick}
+                  mode={'inline'}
+                  inlineCollapsed={this.state.collapsed}
+              >
+                  {getMenus(menus)}
+              </Menu>
+          </Router>
 
           <div id="copyright">Copyright © Jason</div>
         </div>

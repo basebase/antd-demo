@@ -7,11 +7,13 @@ const menus = [
         key: 'operating',
         name: '运营数据概览',
         icon: 'rocket',
+        link: '/operating',
     },
     {
         key: 'product',
         name: '产品数据概览',
         icon: 'notification',
+        link: '/product',
     },
     {
         key: 'marketing',

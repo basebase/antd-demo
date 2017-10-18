@@ -4,7 +4,7 @@ import Mock from 'mockjs'
 import Footer from '../../Footer/index'
 import { Header } from '../../Header/index'
 
-import { Card, Row, Col } from 'antd'
+import { Card, Row, Col, Button, Icon } from 'antd'
 
 import $ from "jquery";
 
@@ -17,6 +17,8 @@ import SimpleArea from '../../Graphics/Area/SimpleArea'
 import LineBarArea from '../../Graphics/LineBarArea/LineBarArea'
 import SimpleReadar from '../../Graphics/Radar/Radar'
 import SimpleScatter from '../../Graphics/Scatter/SimpleScatter'
+
+import SelectButton from '../../Graphics/SelectButton'
 
 
 
@@ -66,34 +68,34 @@ class Home extends React.Component {
 
                 <Row gutter={32}>
                     <Col {...colProps}>
-                        <Card title="SimpleLineChart">
+                        <Card title="SimpleLineChart" extra={<SelectButton/>}>
                             <SimpleLine/>
                         </Card>
                     </Col>
                     <Col {...colProps}>
-                        <Card title="DashedLineChart">
+                        <Card title="DashedLineChart" extra={<SelectButton/>}>
                             <SimpleBar />
                         </Card>
                     </Col>
                     <Col {...colProps}>
-                        <Card title="CustomizedDotLineChart">
+                        <Card title="CustomizedDotLineChart" extra={<SelectButton/>}>
                             <SimpleArea />
                         </Card>
                     </Col>
                     <Col {...colProps}>
-                        <Card title="VerticalLineChart">
+                        <Card title="VerticalLineChart" extra={<SelectButton/>}>
                             <LineBarArea />
                         </Card>
                     </Col>
 
                     <Col {...colProps}>
-                        <Card title="VerticalLineChart">
+                        <Card title="VerticalLineChart" extra={<SelectButton/>}>
                             <SimpleReadar />
                         </Card>
                     </Col>
 
                     <Col {...colProps}>
-                        <Card title="VerticalLineChart">
+                        <Card title="VerticalLineChart" extra={<SelectButton/>}>
                             <SimpleScatter />
                         </Card>
                     </Col>

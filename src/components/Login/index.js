@@ -1,5 +1,10 @@
 import React from 'react'
-import { Form, Input, Button, Icon, Checkbox, notification} from 'antd'
+import {message, Form, Input, Button, Icon, Checkbox, notification} from 'antd'
+
+import { get, post } from '../../axios/ajax'
+import {globalConfig} from '../../GlobalConfig'
+
+import axios from 'axios'
 
 import 'antd/dist/antd.css'
 
@@ -17,13 +22,51 @@ class LoginPage extends React.Component {
         e.preventDefault();
         this.props.form.validateFields((err, values) => {
             if (!err) {
-                console.log('Received values of form: ', values);
                 let n = values.username;
                 let p = values.password;
                 if (n === 'xiaomoyu' && p === 'xiaomoyu') {
-                    // 表单的路由处理
-                    document.cookie = "nowKey=" + "home";
-                    // browserHistory.push('/');
+                    console.log(values)
+
+
+
+                    // axios({
+                    //     url: 'http://0.0.0.0:8088/register',
+                    //     method: 'post',
+                    //     data: {
+                    //         username: n,
+                    //         password: p
+                    //     },
+                    //     headers: {
+                    //         'content-type': 'form-data'
+                    //     }
+                    // }).then((res) => {
+                    //     message.info(res.data)
+                    // }).catch((error) => {
+                    //     message.info(error)
+                    // })
+
+                    axios({
+
+                        url: 'http://0.0.0.0:8088/register',
+                        method: 'post',
+                        data: {username: n, password: p},
+                    }).then((res) => {
+                        message.info(res.data)
+                    }).catch((error) => {
+                        message.info(error)
+                    })
+
+
+                    // axios.get(
+                    //     "http://0.0.0.0:8088/register?username=" + n + "&password=" + p
+                    // ).then((res) => {
+                    //     message.info(res.data)
+                    // }).catch((error) => {
+                    //     message.info(error)
+                    // })
+
+
+
                 } else {
                     this.openNotificationWithIcon('info');
                 }
@@ -46,7 +89,6 @@ class LoginPage extends React.Component {
 
     render() {
         const { getFieldDecorator } = this.props.form;
-        console.log("this.props => ", this.props)
         return (
             <div id="loginpagewrap" style={{ "width": "100%", "height": "100%", "background-color": "#f9f9f9", "overflow": "hidden"  }}>
                 <p style={{ "text-align": "center","font-size": "27px","font-family": "cursive","margin-top": "10%","margin-bottom": "1.4%","font-weight": "bold","color": "#888" }}>鱼策数据</p>
@@ -76,7 +118,7 @@ class LoginPage extends React.Component {
                             )}
                             <a className="login-form-forgot" style={{ "float": "right" }} href="">忘记密码</a>
                             <Button type="primary" htmlType="submit" id="loginBtn" style={{ "width": "100%" }}>登录</Button>
-                            Or <a href="">注册账号!</a>
+                            <a href={globalConfig.register} style={{ "float": "right" }}>注册账号!</a>
                         </FormItem>
                     </Form>
                 </div>
