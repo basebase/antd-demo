@@ -1,7 +1,5 @@
 import React from 'react'
 import {message, Form, Input, Button, Icon, Checkbox, notification} from 'antd'
-
-import { get, post } from '../../axios/ajax'
 import {globalConfig} from '../../GlobalConfig'
 
 import axios from 'axios'
@@ -18,17 +16,26 @@ class LoginPage extends React.Component {
         this.openNotificationWithIcon = this.openNotificationWithIcon.bind(this)
     }
 
+    select = (url_interface, request_data) => {
+        const url = `${globalConfig.api.baseURL}/${url_interface}`
+        axios({
+            url: url,
+            method: 'post',
+            data: request_data,
+        }).then((res) => {
+            message.info(res.data.username)
+        }).catch((error) => {
+            message.info(error)
+        })
+    }
+
     handleSubmit(e) {
         e.preventDefault();
         this.props.form.validateFields((err, values) => {
             if (!err) {
                 let n = values.username;
                 let p = values.password;
-                if (n === 'xiaomoyu' && p === 'xiaomoyu') {
-                    console.log(values)
-                } else {
-                    this.openNotificationWithIcon('info');
-                }
+                this.select('login', {username: n, password: p})
             }
         });
     }
